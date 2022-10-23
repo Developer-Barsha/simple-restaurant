@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+};
+
+body {
+    min-width: 375px;
+    width: 375px;
+    max-width: 375px;
+    height: 100vh;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+
+.container {
+    min-width: 375px;
+    width: 375px;
+    max-width: 375px;
+    height: 100vh;
+    margin: 0 auto;
+    border: 1px solid #999;
+    border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
+    color: #232440;
+    overflow-y: scroll;
+}
+
+header{    
+    background: url('./bg.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
+    background-size: 160px;
+    padding: 20px;
+}
+
+main,
+header {
+    overflow: hidden;
+}
+
+input {
+    background-color: #FFE7E7;
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    padding: 3px 18px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+input:focus {
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+input::placeholder {
+    color: black;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+nav p {
+    color: #4B5563;
+}
+
+nav img {
+    border-radius: 50%;
+}
+
+.dropdown ul{
+    position: relative;
+    z-index: 1000;
+}
+
+.dropdown li{
+    list-style: none;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.dropdown li:hover{
+    color: #e82626;
+    font-weight: 700;
+    /* border-bottom: 2px solid black; */
+}
+
+.slider {
+    position: relative;  
+    padding: 10px 20px;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.slider>button {
+    padding: 7px 15px;
+    background: white;
+    color: #FF0000;
+    border: 0;
+    position: absolute;
+    bottom: 65px;
+    left: 50px;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.slider>button:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
+#dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    gap: 5px;
+}
+
+#dots button {
+    width: 10px;
+    height: 10px;
+    background: #FF0000;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#dots button:hover {
+    background: #999;
+}
+
+.menu{
+    padding: 10px 20px 0px;
+}
+
+.menu, #meals {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    box-sizing: border-box; 
+    display: flex;
+    gap: 10px;
+}
+
+#meals {
+    gap: 15px;
+    padding: 5px 20px 10px;
+}
+
+.menu button{
+    padding: 5px 13px;
+    background: white;
+    color: #FF0000;
+    border: 0;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: 2px solid #FF0000;
+}
+
+.menu button:hover, .active{
+    color: white !important;
+    background: #FF0000 !important;
+}
+
+.menu button img{
+    width: 30px;
+    height: 30px;
+}
+
+.menu::-webkit-scrollbar, #meals::-webkit-scrollbar {
+    width: 3px !important;
+    cursor: pointer !important;
+} 
+
+.meal{
+    width:155px;
+    min-height:250px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background: white;
+    position: relative;
+}
+
+.meal p, .price, .see-all{
+    color: #3B3B3B;
+}
+
+.meal h4, .price{
+    color: #FF0000;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.meal h4{
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+}
+
+.meal h4 span{
+    font-size: 15px;
+}
+
+#meals img{
+    border-radius: 15px;
+    width:131px;
+    height:76px;
+    margin: 5px 0;
+}
+
+.rating{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: black;
+}
+
+.plus{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    background: #FF0000;
+    cursor: pointer;
+}
+
+.plus:hover{
+    background: #e82626;
+}
+
+.Cart{
+    position: relative;
+}
+
+#cart-count{
+    position: absolute;
+    background: #e82626;
+    color: #fff;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+}
+
+.rating i{
+    color: #FF9F06;
+}
+
+.popular-menu{
+    background: #f8f8f9;
+    padding: 10px 20px 80px;
+}
+
+.popular-meal{
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 5px 20px #999;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.main-info{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popular-meal img{
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+}
+
+.see-all:hover, .fa-bars-staggered:hover{
+    color: #FF0000;
+    cursor: pointer;
+}
+
+.popular-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+footer {
+    position: relative;
+}
+
+.bottom-menu {
+    width: 100%;
+    height: 74px;
+    display: flex;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+}
+
+.bottom-menu button {
+    background: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    color: #FFE5E5;
+    transition: 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+
+.bottom-menu .bm-active {
+    background: #FFE5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 15px;
+    color: #FF0000;
+}
+
+.bottom-menu .bm-active span {
+    display: block;
+}
+
+.bottom-menu button span{
+    background: #FFE5E5;
+    display: none;
+    color: black;
+    padding: 10px;
+}
+
+@media screen and (max-width:374px) {
+    body {
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        height: 600px;
+        padding: 15px;
+    }
+}

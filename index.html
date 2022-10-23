@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resturant Task</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4c86bf831a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <i class="fa-solid fa-bars-staggered"></i>
+
+                <p><i class="fa-solid fa-location-dot" style="color: #FF0000;padding-right: 6px;"></i> Freedom way, Lekki Phase</p>
+                <img src="https://scontent.fdac20-1.fna.fbcdn.net/v/t39.30808-6/278869008_4882490525196448_964015319831028350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Q1op15Jg_cUAX8hZECL&_nc_ht=scontent.fdac20-1.fna&oh=00_AT9fPqj-YJprV1m9wznjff84DuIWb31nJn-6nnxQTLkBIg&oe=63571161"
+                    width="35px" height="35px" alt="">
+            </nav>
+
+            <input type="text" placeholder="Search">
+        </header>
+        <main>
+            <div class="slider">
+                <img id="slider-img" src="./images/banner-1.png" alt="">
+                <button>Buy Now</button>
+                <div id="dots">
+                </div>
+            </div>
+
+            <div class="menu">
+                <button id="burger-tab" class="active" onclick="selectedMeals('Burger')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png" alt="">
+                    Burger
+                </button>
+                <button id="pizza-tab" onclick="selectedMeals('Pizza')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="">
+                    Pizza
+                </button>
+                <button id="sandwich-tab" onclick="selectedMeals('Sandwich')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1857/1857943.png" alt="">
+                    Sandwich
+                </button>
+            </div>
+            <div id="meals">
+
+            </div>
+
+            <div class="popular-menu">
+                <div class="popular-top">
+                    <h3>Popular Meal Menu</h3>
+                    <p class="see-all">See All <i class="fa-sharp fa-solid fa-caret-right"></i></p>
+                </div>
+                <div class="popular-meal">
+                    <div class="main-info">
+                        <img src="https://www.killingthyme.net/wp-content/uploads/2020/09/sausage-and-roasted-red-pepper-pizza-2-500x500.jpg"
+                            alt="">
+                        <div>
+                            <h4>Pepper Pizza</h4>
+                            <p>5kg box of pizza</p>
+                        </div>
+                    </div>
+                    <h4 class="price">$54</h4>
+                </div>
+                <div class="popular-meal">
+                    <div class="main-info">
+                        <img src="https://natashaskitchen.com/wp-content/uploads/2021/08/Grilled-Cheese-Sandwich-SQ.jpg"
+                            alt="">
+                        <div>
+                            <h4>Grilled Sandwich</h4>
+                            <p>5kg box of sandwich</p>
+                        </div>
+                    </div>
+                    <h4 class="price">$75</h4>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="bottom-menu">
+                <button id="Home" onclick="setBmActive('Home')" class='bm-active'><i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+                <button id="Account" onclick="setBmActive('Account')"><i class="fa-solid fa-user"></i>
+                    <span>Account</span>
+                </button>
+                <button id="Cart" onclick="setBmActive('Cart')"><i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                    <h6 id="cart-count">0</h6>
+                </button>
+                <button id="Message" onclick="setBmActive('Message')"><i class="fa-solid fa-message"></i>
+                    <span>Message</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // banner
+        const images = [
+            'images/banner-1.png',
+            'images/banner-2.png',
+            'images/banner-3.png',
+        ];
+        let imgIndex = 0;
+        const slide = document.getElementById('slider-img');
+        setInterval(() => {
+            const image = images[imgIndex];
+            slide.setAttribute('src', image);
+            if (imgIndex < images.length) {
+                imgIndex++;
+            }
+            if (imgIndex === images.length) {
+                imgIndex = 0;
+            }
+        }, 3000);
+
+        const dots = document.getElementById('dots');
+        for (let i = 0; i < images.length; i++) {
+            const element = images[i];
+            let button = document.createElement('button');
+            button.id = `${i}-slide`;
+            dots.append(button);
+            button.addEventListener('click', () => {
+                slide.setAttribute('src', images[i]);
+            });
+        };
+
+        // meals data
+        const burgers = [
+            {
+                name: 'Chesse Burger',
+                price: 50,
+                rating: 5,
+                description: '100 gm meat + onion + tomato + Lettuce cheese',
+                img: './images/7.png'
+            },
+            {
+                name: 'Chicken Burger',
+                price: 75,
+                rating: 4.5,
+                description: '100 gm chicken + tomato + Lettuce cheese',
+                img: './images/8.png'
+            },
+            {
+                name: 'Ham Burger',
+                price: 65,
+                rating: 4.2,
+                description: '100 gm meat + onion + tomato + Lettuce cheese',
+                img: './images/9.png'
+            },
+            {
+                name: 'Ham Burger',
+                price: 65,
+                rating: 4.2,
+                description: '100 gm meat + onion + tomato + Lettuce cheese',
+                img: './images/9.png'
+            }
+        ];
+
+        const pizzas = [
+            {
+                name: 'Pizza Crust',
+                price: 100,
+                rating: 4.3,
+                description: '100 gm vegetable + onion + tomato + Lettuce cheese',
+                img: './images/4.png'
+            },
+            {
+                name: 'Pizza Recepten',
+                price: 80,
+                rating: 4.0,
+                description: '100 gm vegetable + onion + tomato + Lettuce cheese',
+                img: './images/5.png'
+            },
+            {
+                name: 'Pizza Recepten',
+                price: 80,
+                rating: 4.0,
+                description: '100 gm vegetable + onion + tomato + Lettuce cheese',
+                img: './images/5.png'
+            },
+            {
+                name: 'Pizza Peperoni',
+                price: 120,
+                rating: 5,
+                description: '100 gm flour + tomato + peperoni',
+                img: './images/6.png'
+            }
+        ];
+
+        const sandwiches = [
+            {
+                name: 'Egg Sandwich',
+                price: 69,
+                rating: 4.8,
+                description: '100 gm meat + onion + tomato + egg',
+                img: './images/1.png'
+            },
+            {
+                name: 'Chicken Sandwich',
+                price: 85,
+                rating: 4.5,
+                description: '100 gm chicken + avocado + tomato',
+                img: './images/2.png'
+            },
+            {
+                name: 'Chicken Sandwich',
+                price: 85,
+                rating: 4.5,
+                description: '100 gm chicken + avocado + tomato',
+                img: './images/2.png'
+            },
+            {
+                name: 'Ham Sandwich',
+                price: 70,
+                rating: 4.2,
+                description: '100 gm meat + onion + tomato + Lettuce cheese',
+                img: './images/3.png'
+            }
+        ];
+
+        // meal tabs
+        const mealsSection = document.getElementById('meals');
+        for (let i = 0; i < burgers.length; i++) {
+            const element = burgers[i];
+            const mealDiv = document.createElement('div');
+            mealDiv.classList.add('meal');
+            mealDiv.innerHTML = `
+                        <h5 class='rating'><i class="fa-solid fa-star"></i> ${burgers[i]?.rating}</h5>
+                        <img src=${burgers[i]?.img}></img>
+                        <h3>${burgers[i]?.name}</h3>
+                        <p>${burgers[i]?.description}</p>
+                        <h4>$ ${burgers[i]?.price}<span>.00</span></h4>
+                        <div onclick={increaseCount()} class='plus'><i class="fa-solid fa-plus"></i></div>
+                        `;
+            mealsSection.append(mealDiv);
+        }
+
+        let selected = 'Burger';
+        let selectedBm = 'Home';
+        const selectedMeals = (meal) => {
+            selected = meal;
+        }
+
+        const burgerTab = document.getElementById('burger-tab');
+        burgerTab.addEventListener('click', () => {
+            burgerTab.classList.add('active');
+            sandwichTab.classList.remove('active');
+            pizzaTab.classList.remove('active');
+            changeMeals(burgers)
+        });
+
+        const pizzaTab = document.getElementById('pizza-tab');
+        pizzaTab.addEventListener('click', () => {
+            pizzaTab.classList.add('active');
+            sandwichTab.classList.remove('active');
+            burgerTab.classList.remove('active');
+            changeMeals(pizzas)
+        });
+
+        const sandwichTab = document.getElementById('sandwich-tab');
+        sandwichTab.addEventListener('click', () => {
+            sandwichTab.classList.add('active');
+            burgerTab.classList.remove('active');
+            pizzaTab.classList.remove('active');
+            changeMeals(sandwiches)
+
+        });
+
+        const changeMeals = (meals) => {
+            mealsSection.innerHTML = '';
+            for (let i = 0; i < meals.length; i++) {
+                const element = meals[i];
+                const mealDiv = document.createElement('div');
+                mealDiv.classList.add('meal');
+                mealDiv.innerHTML = `
+                    <h5 class='rating'><i class="fa-solid fa-star"></i> ${meals[i]?.rating}</h5>
+                    <img src=${meals[i]?.img}></img>
+                    <h3>${meals[i]?.name}</h3>
+                    <p>${meals[i]?.description}</p>
+                    <h4>$ ${meals[i]?.price}<span>.00</span></h4>
+                    <div onclick={increaseCount()} class='plus'><i class="fa-solid fa-plus"></i></div>
+                `;
+                mealsSection.append(mealDiv);
+            }
+        }
+
+        // bottom menu handling
+        const bmMenus = ['Home', 'Cart', 'Message', 'Account'];
+        const setBmActive = (id) => {
+            const btn = document.getElementById(id);
+            for (let i = 0; i < bmMenus.length; i++) {
+                const element = document.getElementById(bmMenus[i]);
+                element.classList.remove('bm-active');
+            }
+            btn.classList.toggle('bm-active');
+        }
+
+        // cart counting 
+        let cartItems = 0;
+        const cartCount = document.getElementById('cart-count');
+        const increaseCount = () => {
+            cartItems = cartItems + 1;
+            cartCount.innerText = cartItems;
+        }
+    </script>
+</body>
+
+</html>
